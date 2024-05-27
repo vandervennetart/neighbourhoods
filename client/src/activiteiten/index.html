@@ -19,7 +19,7 @@
             rel="stylesheet"
         />
         <script type="module" src="../js/main.js"></script>
-        <title>Neighbourhoods</title>
+        <title>Activiteiten</title>
     </head>
     <body>
         <div class="container">
@@ -35,7 +35,11 @@
                     <nav>
                         <ul>
                             <li><a href="../">Home</a></li>
-                            <li><a class="active" href="../activiteiten/">Activiteiten</a></li>
+                            <li>
+                                <a class="active" href="../activiteiten/"
+                                    >Activiteiten</a
+                                >
+                            </li>
                             <li><a href="../bewoners/">Bewoners</a></li>
                             <li><a href="../profiel/">Profiel</a></li>
                         </ul>
@@ -46,13 +50,22 @@
             <main>
                 <section class="banner">
                     <div>
-                        <h1>Welkom</h1>
-                        <h2>Bij onze zorgzame buurt</h2>
+                        <h1>Plan nu zelf</h1>
+                        <h2>Organiseer je eigen activiteit en help de buurt</h2>
+                        <a class="button">Klik hier om te beginnen organiseren</a>
                     </div>
                 </section>
 
                 <section class="activiteiten">
-                    <h2>Activiteiten:</h2>
+                    <h2 class="hidden">activiteiten</h2>
+                    <div class="sort">
+                        <h3>Sorteer op:</h3>
+                        <ul>
+                            <li><button>Datum</button></li>
+                            <li><button>Naam</button></li>
+                            <li><button>Prijs</button></li>
+                        </ul>
+                    </div>
                     <ul>
                         <li>
                             <h3>Piano lessen</h3>
@@ -89,59 +102,59 @@
                                 <p>€<span id="prijs">5</span></p>
                             </div>
                         </li>
-                    </ul>
-                    <a href="">Zie meer</a>
-                </section>
 
-                <section>
-                    <h2>Leer ons kennen</h2>
-                    <ul>
                         <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
+                            <h3>Lopen</h3>
+                            <p>
+                                Leer piano spelen met ondersteuning van een paar
+                                professionele piano leraren
+                            </p>
+                            <div>
+                                <p>
+                                    aantal mensen:
+                                    <span id="aantalMensen">3</span>/<span
+                                        id="maxMensen"
+                                        >20</span
+                                    >
+                                </p>
+                                <p>€<span id="prijs">5</span></p>
+                            </div>
                         </li>
 
                         <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
+                            <h3>Lopen</h3>
+                            <p>
+                                Leer piano spelen met ondersteuning van een paar
+                                professionele piano leraren
+                            </p>
+                            <div>
+                                <p>
+                                    aantal mensen:
+                                    <span id="aantalMensen">3</span>/<span
+                                        id="maxMensen"
+                                        >20</span
+                                    >
+                                </p>
+                                <p>€<span id="prijs">5</span></p>
+                            </div>
                         </li>
 
                         <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
+                            <h3>Lopen</h3>
+                            <p>
+                                Leer piano spelen met ondersteuning van een paar
+                                professionele piano leraren
+                            </p>
+                            <div>
+                                <p>
+                                    aantal mensen:
+                                    <span id="aantalMensen">3</span>/<span
+                                        id="maxMensen"
+                                        >20</span
+                                    >
+                                </p>
+                                <p>€<span id="prijs">5</span></p>
+                            </div>
                         </li>
                     </ul>
                 </section>
