@@ -58,18 +58,29 @@ button:focus-visible {
 a {
     text-decoration: none;
     color: var(--primary);
+
+    span {
+        text-decoration: underline;
+    }
 }
 
 ul {
     list-style: none;
+    padding: 0;
 }
 
 button {
     z-index: 2;
 }
 
-.hidden {
-    display: none;
+.hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 /* componenten */
@@ -116,6 +127,12 @@ button {
 }
 
 .activiteiten {
+    .scrollable {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+    }
+
     & > ul {
         padding: 0;
         display: flex;
@@ -126,7 +143,7 @@ button {
             background-color: var(--broken-white);
             padding: 0.5rem 1rem;
             border-radius: 1rem;
-
+            min-width: 20rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -152,13 +169,19 @@ button {
 }
 
 .profilepicture {
-    display: flex;
+    display: inline-flex;
     flex-direction: column-reverse;
     align-items: center;
 
     img {
+        width: 5rem;
         border-radius: 100%;
     }
+}
+
+.kaart iframe {
+    width: 100%;
+    height: 10rem;
 }
 
 .bewoners {
@@ -178,16 +201,26 @@ button {
     border-radius: 10px;
     border: none;
     font-size: 1.5rem;
+    width: 100%;
+
+    text-align: center;
 }
 
 form {
+    justify-self: center;
+
     display: flex;
     flex-direction: column;
     gap: 2rem;
 
-    & > div {
+    > div {
         display: flex;
         flex-direction: column;
+        gap: 0.5rem;
+
+        &.checkbox {
+            flex-direction: row;
+        }
     }
 
     fieldset {
@@ -203,24 +236,37 @@ form {
             margin-bottom: 0.5em;
         }
 
-        input{
-            max-width: calc(100% - 1.5rem); 
+        input {
+            max-width: calc(100% - 1.5rem);
         }
 
-        label .field-label{
-            
+        label .field-label {
             font-size: 1.5rem;
         }
     }
-
-
 
     input {
         border: 2px solid var(--accent2);
         border-radius: 10px;
         padding: 0.5rem 1rem;
-        font-size: xx-large;
         outline-color: var(--accent3);
+
+        &[type="radio"],
+        &[type="checkbox"] {
+            width: 1em;
+            height: 1em;
+            cursor: pointer;
+
+            + label {
+                &,
+                > span.field-label {
+                    font-size: 1em;
+                    font-weight: normal;
+                    display: inline;
+                    cursor: pointer;
+                }
+            }
+        }
     }
 
     input.invalid {
@@ -233,47 +279,77 @@ form {
         text-decoration: none;
     }
 
+    span {
+        &.field-label,
+        &.field-error {
+            font-size: 1.5rem;
+            font-weight: 400;
 
-    span{
-        font-size: 2rem;
-        font-weight: 400;
+            &.field-hint {
+                display: inline-block;
+                margin: 0.25em 0em;
+                color: #666;
+                font-size: 1rem;
+
+                ul {
+                    list-style: circle;
+                }
+            }
+
+            &.field-error {
+                display: inline-block;
+                margin-top: 0.25em;
+                color: var(--error-color);
+                font-size: 1rem;
+            }
+        }
 
         &.field-hint {
             display: inline-block;
             margin: 0.25em 0em;
             color: #666;
-            font-size: 1rem;
-
-            ul{
-                list-style: circle;
-            }
-        }
-
-        &.field-error {
-            display: inline-block;
-            margin-top: 0.25em;
-            color: var(--error-color);
-            font-size: 1rem;
         }
     }
 
     .errorSummary {
         display: none;
     }
+}
 
-    .profielfoto {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+.profielfoto {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: column;
 
-        figure {
-            order: -1;
-            img {
-                border-radius: 30%;
-                height: 10rem;
-                aspect-ratio: 1/1;
-            }
+    figure {
+        order: -1;
+        img {
+            border-radius: 30%;
+            height: 10rem;
+            aspect-ratio: 1/1;
         }
+    }
+}
+
+.logo {
+    text-align: center;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    display: inline-flex;
+    color: var(--primary);
+    text-decoration: none;
+    align-items: flex-end;
+    justify-content: center;
+
+    &::before {
+        display: block;
+        content: "";
+        width: clamp(3.5rem, 4vw, 4rem);
+        height: clamp(3rem, 4vw, 4rem);
+
+        background-image: url(../public/logo.svg);
+        background-repeat: no-repeat;
     }
 }
 
@@ -281,62 +357,53 @@ form {
 header {
     margin: 2rem 0;
 
-    .logo {
-        font-weight: 700;
-        font-variant: all-petite-caps;
-        letter-spacing: 0.2em;
-        font-size: clamp(1rem, 2vw, 2rem);
-        display: inline-block;
-
-        color: var(--primary);
-        text-decoration: none;
-    }
-
     .content {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
 
-        ul {
-            margin: 0;
-            padding: 0;
-        }
+        nav {
+            ul {
+                margin: 0;
+                padding: 0;
+            }
 
-        li {
-            position: relative;
-            padding: 0.25rem 0;
-            margin: 0.5rem 0;
-        }
+            li {
+                position: relative;
+                padding: 0.25rem 0;
+                margin: 0.5rem 0;
+            }
 
-        a {
-            display: block;
-            position: relative;
-        }
+            a {
+                display: block;
+                position: relative;
+            }
 
-        a.active::before,
-        li:hover a::before {
-            content: "";
-            position: absolute;
-            width: 0.4rem;
-            aspect-ratio: 1/1;
+            a.active::before,
+            li:hover a::before {
+                content: "";
+                position: absolute;
+                width: 0.4rem;
+                aspect-ratio: 1/1;
 
-            scale: 1;
+                scale: 1;
 
-            top: 25%;
-            left: -1rem;
+                top: 25%;
+                left: -1rem;
 
-            background-color: var(--bg);
-            border: 2px solid #e87e04;
+                background-color: var(--bg);
+                border: 2px solid #e87e04;
 
-            animation: listStyle;
-            animation-duration: 0.5s;
-            animation-fill-mode: forwards;
+                animation: listStyle;
+                animation-duration: 0.5s;
+                animation-fill-mode: forwards;
+            }
         }
     }
 
     .hamburger {
         background-color: var(--bg);
-        outline: none;
         border: none;
         color: var(--primary);
         position: relative;
@@ -381,7 +448,6 @@ header {
         display: flex;
         flex-flow: column;
         right: 3.5em;
-        top: 0.15em;
 
         & > span {
             width: 20px;
@@ -399,6 +465,7 @@ main {
     flex-direction: column;
     gap: 2rem;
     position: relative;
+    justify-content: center;
 }
 
 footer {

@@ -58,13 +58,16 @@
                         <ul></ul>
                     </div>
                     <div class="profielfoto">
-                        <label for="profielfoto" class="button">change picture</label>
+                        <label for="profielfoto" class="button"
+                            >change picture</label
+                        >
                         <input
                             type="file"
                             id="profielfoto"
                             name="profielfoto"
                             accept="image/png, image/jpeg"
                             class="hidden"
+                            required
                         />
                         <figure>
                             <img
@@ -84,8 +87,6 @@
                             id="naam"
                             autocomplete="name"
                             required
-                            autofocus
-                            tabindex="0"
                         />
                     </div>
 
@@ -99,8 +100,6 @@
                             id="email"
                             autocomplete="email"
                             required
-                            autofocus
-                            tabindex="0"
                         />
                     </div>
 
@@ -114,8 +113,6 @@
                             id="naam"
                             autocomplete="name"
                             required
-                            autofocus
-                            tabindex="0"
                         />
                     </div>
 
@@ -133,8 +130,6 @@
                             id="huidigWachtwoord"
                             autocomplete="current-password"
                             required
-                            autofocus
-                            tabindex="0"
                         />
 
                         <label for="NieuwWachtwoord">
@@ -154,13 +149,13 @@
                             id="NieuwWachtwoord"
                             autocomplete="new-password"
                             required
-                            autofocus
-                            tabindex="0"
                         />
                     </fieldset>
 
                     <div>
-                        <button class="button" type="submit">Sla veranderingen op</button>
+                        <button class="button" type="submit">
+                            Sla veranderingen op
+                        </button>
                     </div>
                 </form>
             </main>

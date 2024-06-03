@@ -23,137 +23,59 @@
     </head>
     <body>
         <div class="container">
-            <header>
-                <div class="content">
-                    <a class="logo" href="">Neighbourhoods</a>
-                    <button aria-expanded="false" class="hamburger" id="menu">
-                        <span aria-hidden="true" class="icon">
-                            <span></span><span></span><span></span>
-                        </span>
-                        <span>Menu</span>
-                    </button>
-                    <nav>
-                        <ul>
-                            <li><a class="active" href="#">Home</a></li>
-                            <li><a href="#">Activiteiten</a></li>
-                            <li><a href="#">Bewoners</a></li>
-                            <li><a href="#">Profiel</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
-
+            <header></header>
             <main>
-                <section class="banner">
-                    <div>
-                        <h1>Welkom</h1>
-                        <h2>Bij onze zorgzame buurt</h2>
+                <h1 class="logo" href="">Neighbourhoods</h1>
+                <form action="" id="profiel">
+                    <div
+                        class="errorSummary"
+                        role="group"
+                        aria-labelledby="errorSummary-heading"
+                        tabindex="-1"
+                    >
+                        <h2 id="errorSummary-heading">Er is een probleem</h2>
+                        <ul></ul>
                     </div>
-                </section>
 
-                <section class="activiteiten">
-                    <h2>Activiteiten:</h2>
-                    <ul>
-                        <li>
-                            <h3>Piano lessen</h3>
-                            <p>
-                                Leer piano spelen met ondersteuning van een paar
-                                professionele piano leraren
-                            </p>
-                            <div>
-                                <p>
-                                    aantal mensen:
-                                    <span id="aantalMensen">3</span>/<span
-                                        id="maxMensen"
-                                        >20</span
-                                    >
-                                </p>
-                                <p>€<span id="prijs">5</span></p>
-                            </div>
-                        </li>
+                    <div>
+                        <label for="email">
+                            <span class="field-label">Email:</span>
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            autocomplete="email"
+                            required
+                            autofocus
+                            tabindex="0"
+                        />
+                    </div>
 
-                        <li>
-                            <h3>Lopen</h3>
-                            <p>
-                                Leer piano spelen met ondersteuning van een paar
-                                professionele piano leraren
-                            </p>
-                            <div>
-                                <p>
-                                    aantal mensen:
-                                    <span id="aantalMensen">3</span>/<span
-                                        id="maxMensen"
-                                        >20</span
-                                    >
-                                </p>
-                                <p>€<span id="prijs">5</span></p>
-                            </div>
-                        </li>
-                    </ul>
-                    <a href="">Zie meer</a>
-                </section>
+                    <div>
+                        <label for="wachtwoord">
+                            <span class="field-label">Wachtwoord:</span>
+                        </label>
+                        <input
+                            type="password"
+                            name="wachtwoord"
+                            id="wachtwoord"
+                            autocomplete="current-password"
+                            required
+                        />  
+                    </div>
 
-                <section>
-                    <h2>Leer ons kennen</h2>
-                    <ul>
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-
-                        <li>
-                            <h3>Tom</h3>
-                            <img
-                                src="https://picsum.photos/100/100"
-                                alt="Profielfoto"
-                            />
-                        </li>
-                    </ul>
-                </section>
+                    <div>
+                        <button class="button" type="submit">Login</button>
+                        <a href="../registreer/"
+                            >Heb je nog geen account?
+                            <span>Registreer hier</span></a
+                        >
+                    </div>
+                </form>
             </main>
 
-            <footer>
-                <h2>contacteer ons</h2>
-                <ul>
-                    <li>art.vandervennet@student.odisee.be</li>
-                    <li>artvandervennet.ikdoeict.be</li>
-                </ul>
-            </footer>
+            <footer></footer>
         </div>
     </body>
 </html>
