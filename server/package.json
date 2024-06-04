@@ -1,0 +1,22 @@
+{
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
+        "morgan": "^1.10.0",
+        "nodemon": "^3.1.2"
+    },
+    "name": "server",
+    "version": "1.0.0",
+    "main": "db.js",
+    "type": "module",
+    "scripts": {
+        "start": "node loader.cjs",
+        "dev": "nodemon server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "mysql2": "^3.9.8"
+    }
+}

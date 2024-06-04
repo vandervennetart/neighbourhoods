@@ -140,6 +140,7 @@ button {
         flex-wrap: wrap;
         gap: 1rem;
         li {
+            position: relative;
             background-color: var(--broken-white);
             padding: 0.5rem 1rem;
             border-radius: 1rem;
@@ -168,7 +169,20 @@ button {
     }
 }
 
+.overlay-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 2;
+}
+
 .profilepicture {
+    position: relative;
     display: inline-flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -202,6 +216,9 @@ button {
     border: none;
     font-size: 1.5rem;
     width: 100%;
+
+    max-width: 40rem;
+    justify-self: center;
 
     text-align: center;
 }
@@ -245,7 +262,8 @@ form {
         }
     }
 
-    input {
+    input,
+    textarea {
         border: 2px solid var(--accent2);
         border-radius: 10px;
         padding: 0.5rem 1rem;
@@ -267,47 +285,52 @@ form {
                 }
             }
         }
+
+        &.invalid {
+            color: var(--error-color);
+            outline-color: var(--error-color);
+        }
     }
 
-    input.invalid {
-        color: var(--error-color);
-        outline-color: var(--error-color);
-    }
+    label {
+        display: flex;
+        flex-direction: column;
 
-    label > abbr {
-        color: var(--error-color);
-        text-decoration: none;
-    }
+        > abbr {
+            color: var(--error-color);
+            text-decoration: none;
+        }
 
-    span {
-        &.field-label,
-        &.field-error {
-            font-size: 1.5rem;
-            font-weight: 400;
+        span {
+            &.field-label,
+            &.field-error {
+                font-size: 1.5rem;
+                font-weight: 400;
+
+                &.field-hint {
+                    display: inline-block;
+                    margin: 0.25em 0em;
+                    color: #666;
+                    font-size: 1rem;
+
+                    ul {
+                        list-style: circle;
+                    }
+                }
+
+                &.field-error {
+                    display: inline-block;
+                    margin-top: 0.25em;
+                    color: var(--error-color);
+                    font-size: 1rem;
+                }
+            }
 
             &.field-hint {
                 display: inline-block;
                 margin: 0.25em 0em;
                 color: #666;
-                font-size: 1rem;
-
-                ul {
-                    list-style: circle;
-                }
             }
-
-            &.field-error {
-                display: inline-block;
-                margin-top: 0.25em;
-                color: var(--error-color);
-                font-size: 1rem;
-            }
-        }
-
-        &.field-hint {
-            display: inline-block;
-            margin: 0.25em 0em;
-            color: #666;
         }
     }
 
@@ -492,33 +515,90 @@ footer {
 
 /* BREAKPOINTS */
 @media (min-width: 46.875rem) {
-    .hamburger {
-        display: none;
-    }
-    .hamburger[aria-expanded="false"] + nav,
-    .hamburger[aria-expanded="true"] + nav {
-        width: fit-content;
-        animation: none;
-        padding-top: 0;
+    .info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        > * {
+            grid-column: 1;
+        }
+
+        .kaart {
+            grid-column: 2;
+            grid-row: 4 span;
+            h3 {
+                display: none;
+            }
+
+            iframe{
+                height: 100%;
+            }
+        }
+
+        .deelnemers, .button{
+            grid-column: span 2;
+        }
+
     }
 
-    header .content {
-        display: flex;
-        flex-direction: row;
+    header {
+        .hamburger {
+            display: none;
+        }
+        .hamburger[aria-expanded="false"] + nav,
+        .hamburger[aria-expanded="true"] + nav {
+            display: block;
+            width: fit-content;
+            animation: none;
+            padding-top: 0;
+            animation: none;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            a {
+                display: flex;
+                align-items: center;
+            }
+
+            li {
+                padding: 1rem 2rem;
+            }
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 1.5rem;
+        }
     }
 
-    header .content a {
-        display: flex;
-        align-items: center;
+    main {
+        justify-content: flex-start;
     }
 
-    header .content li {
-        padding: 1rem 2rem;
+    .banner {
+        min-height: 30rem;
     }
 
-    header ul {
-        display: flex;
-        justify-content: center;
+    .bewoners {
+        ul {
+            justify-content: flex-start;
+            gap: 4rem;
+        }
+    }
+
+    .profilepicture {
+        img {
+            width: 8rem;
+        }
+    }
+
+    form {
+        align-self: center;
+        max-width: 50rem;
     }
 }
 

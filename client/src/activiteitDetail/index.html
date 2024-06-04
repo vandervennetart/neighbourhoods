@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            content="width=device-width, initial-scale=1.0, "
             name="viewport"
         />
         <meta content="ie=edge" http-equiv="X-UA-Compatible" />
@@ -18,12 +18,13 @@
             href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,700;1,400;1,700&display=swap"
             rel="stylesheet"
         />
-        <script type="module" src="../js/main.js"></script>
-        <title>Neighbourhoods</title>
+        <script type="module" src="../js/header.js"></script>
+        <title>Activiteit details</title>
     </head>
     <body>
         <div class="container">
             <header>
+                <a href="#banner" class="hidden">skiplink</a>
                 <div class="content">
                     <a class="logo" href="">Neighbourhoods</a>
                     <button aria-expanded="false" class="hamburger" id="menu">
@@ -34,7 +35,7 @@
                     </button>
                     <nav>
                         <ul>
-                            <li><a href="../">Home</a></li>
+                            <li><a href="../home/">Home</a></li>
                             <li><a href="../activiteiten/">Activiteiten</a></li>
                             <li><a href="../bewoners/">Bewoners</a></li>
                             <li><a href="../profiel/">Profiel</a></li>
@@ -52,8 +53,9 @@
                         </p>
                     </div>
                 </section>
-                <h2 class="hidden">Info</h2>
-                <section>
+
+                <section class="info">
+                    <h2 class="hidden">Info</h2>
                     <div class="kaart">
                         <h3>Locatie:</h3>
                         <iframe
@@ -65,7 +67,7 @@
                         ></iframe>
                     </div>
                     <div class="organisatoren">
-                        <h3>Organisatoren:</h3>
+                        <h3>Organisator:</h3>
                         <ul>
                             <li class="profilepicture">
                                 <h3>Tom</h3>
