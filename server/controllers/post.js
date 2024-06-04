@@ -10,12 +10,12 @@ where activiteiten_id = ?;`;
         const [activiteiten] = await pool.execute(activityQuery);
         const activiteit = activiteiten;
 
-        for await (const e of activiteit){
+        for await (const e of activiteit) {
             const [deelnemers] = await pool.execute(participantQuery, [e.id]);
             e.deelnemers = deelnemers;
         }
-        
-        console.log(activiteit)
+
+        console.log(activiteit);
         res.status(200).json(activiteit);
     } catch (error) {
         console.error("Error creating user:", error);
@@ -80,13 +80,25 @@ where activiteiten_id = ?;`;
 
 export const getAllOrganised = async (req, res) => {
     const id = +req.params.id;
-    const query = `select activiteiten.* from activiteiten
+    const activityQuery = `select activiteiten.* from activiteiten
 inner join profielen on profielen.id = organisator_id
 where profielen.id = ?;`;
+
+    const participantQuery = `select naam, profielfoto from profielen_has_activiteiten
+inner join profielen on Profielen_id = Profielen.id
+where activiteiten_id = ?;`;
+
     try {
-        const values = [id];
-        const [result] = await pool.execute(query, values);
-        res.status(200).json(result);
+        const [activiteiten] = await pool.execute(activityQuery, [id]);
+        const activiteit = activiteiten;
+
+        for await (const e of activiteit) {
+            const [deelnemers] = await pool.execute(participantQuery, [e.id]);
+            e.deelnemers = deelnemers;
+        }
+
+        console.log(activiteit);
+        res.status(200).json(activiteit);
     } catch (error) {
         console.error("Error creating user:", error);
         return res.status(500).json({
@@ -98,13 +110,23 @@ where profielen.id = ?;`;
 
 export const getAllParticipant = async (req, res) => {
     const id = +req.params.id;
-    const query = `select activiteiten.* from profielen_has_activiteiten
+    const activityQuery = `select activiteiten.* from profielen_has_activiteiten
 inner join activiteiten on activiteiten_id = activiteiten.id
 where Profielen_id = ?`;
+    const participantQuery = `select naam, profielfoto from profielen_has_activiteiten
+inner join profielen on Profielen_id = Profielen.id
+where activiteiten_id = ?;`;
     try {
-        const values = [id];
-        const [result] = await pool.execute(query, values);
-        res.status(200).json(result);
+        const [activiteiten] = await pool.execute(activityQuery, [id]);
+        const activiteit = activiteiten;
+
+        for await (const e of activiteit) {
+            const [deelnemers] = await pool.execute(participantQuery, [e.id]);
+            e.deelnemers = deelnemers;
+        }
+
+        console.log(activiteit);
+        res.status(200).json(activiteit);
     } catch (error) {
         console.error("Error creating user:", error);
         return res.status(500).json({
