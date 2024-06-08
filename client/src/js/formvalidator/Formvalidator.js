@@ -20,6 +20,7 @@ export class FormValidator {
         this.validators.forEach((validator) => {
             if (this.errors.find((err) => err.name === validator.name)) return;
 
+
             if (!validator.method(validator.field)) {
                 this.errors.push(validator);
             }
@@ -40,7 +41,7 @@ export class FormValidator {
             event.preventDefault();
             event.stopImmediatePropagation();
         }
-        this.showSummary();
+        this.showSummary(this.errors);
         this.showInlineErrors();
     }
 
@@ -104,8 +105,8 @@ export class FormValidator {
         //      verwijder de class 'invalid'
     }
 
-    showSummary() {
-        this.errors.forEach((err) => {
+    showSummary(errors) {
+        errors.forEach((err) => {
             const errorSummary = document.querySelector("div.errorSummary");
             errorSummary.style.display = "block";
             const errorList = document

@@ -1,17 +1,6 @@
-import { getAllProfiles } from "./api/profielService";
-import { getProfileElement } from "./api/profielView";
-import { getAllActiviteiten } from "./api/activiteitService";
-import { getActiviteitElement } from "./api/activiteitView";
+import { getAllProfiles } from "./api/services/profielService.js";
+import { getProfileElement } from "./api/views/profielView.js";
+import { getAllActiviteiten } from "./api/services/activiteitService.js";
+import { getActiviteitElement } from "./api/views/activiteitView.js";
 
-const bewoners = document.querySelector(".bewoners ul")
-const activiteiten = document.querySelector(".activiteiten ul");
 
-getAllProfiles().then((data) => data.forEach(element => {
-    bewoners.appendChild(getProfileElement(element));
-}))
-
-getAllActiviteiten().then((data) =>
-    data.forEach((element) => {
-        activiteiten.appendChild(getActiviteitElement(element));
-    })
-);

@@ -1,14 +1,17 @@
 import express from "express";
 import { postValidator } from "../middelware/postValidation.js";
 import { getAllPosts, getPost, createPost, getAllOrganised, getAllParticipant } from "../controllers/post.js";
+import {authenticateToken} from "../middelware/authenticateValidation.js";
 
 const postsRouter = express.Router();
 
-postsRouter.route("/").get(getAllPosts).post(postValidator, createPost);
+postsRouter.route("/posts/").post(postValidator, createPost);
+postsRouter.route("/posts?:sort").get(getAllPosts)
 
-postsRouter.route("/:id").get(getPost);
 
-postsRouter.route("/ofProfile/:id/organiseerd").get(getAllOrganised);
-postsRouter.route("/ofProfile/:id/deelname").get(getAllParticipant);
+postsRouter.route("/posts/:id").get(getPost);
+
+postsRouter.route("/posts/ofProfile/:id/organiseerd").get(getAllOrganised);
+postsRouter.route("/posts/ofProfile/:id/deelname").get(getAllParticipant);
 
 export default postsRouter;

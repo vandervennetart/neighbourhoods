@@ -19,6 +19,7 @@
             rel="stylesheet"
         />
         <script type="module" src="../js/header.js"></script>
+        <script type="module" src="../js/activiteiten.js"></script>
         <title>Activiteiten</title>
     </head>
     <body>
@@ -45,7 +46,7 @@
             </header>
 
             <main>
-                <section class="banner">
+                <section class="banner" id="banner">
                     <div>
                         <h1>Plan nu zelf</h1>
                         <h2>Organiseer je eigen activiteit en help de buurt</h2>
@@ -55,107 +56,22 @@
                     </div>
                 </section>
 
-                <section class="activiteiten">
+                <section >
                     <h2 class="hidden">activiteiten</h2>
                     <div class="sort">
                         <h3>Sorteer op:</h3>
                         <ul>
-                            <li><button>Datum</button></li>
-                            <li><button>Naam</button></li>
-                            <li><button>Prijs</button></li>
+                            <li><button id="datum">Datum</button></li>
+                            <li><button id="naam">Naam</button></li>
+                            <li><button id="prijs">Prijs</button></li>
                         </ul>
                     </div>
-                    <ul>
-                        <li>
-                            <h3>Piano lessen</h3>
-                            <p>
-                                Leer piano spelen met ondersteuning van een paar
-                                professionele piano leraren
-                            </p>
-                            <div>
-                                <p>
-                                    aantal mensen:
-                                    <span id="aantalMensen">3</span>/<span
-                                        id="maxMensen"
-                                        >20</span
-                                    >
-                                </p>
-                                <p>€<span id="prijs">5</span></p>
-                            </div>
-                        </li>
+                    <div class="activiteiten">
+                        <ul>
 
-                        <li>
-                            <h3>Lopen</h3>
-                            <p>
-                                Leer piano spelen met ondersteuning van een paar
-                                professionele piano leraren
-                            </p>
-                            <div>
-                                <p>
-                                    aantal mensen:
-                                    <span id="aantalMensen">3</span>/<span
-                                        id="maxMensen"
-                                        >20</span
-                                    >
-                                </p>
-                                <p>€<span id="prijs">5</span></p>
-                            </div>
-                        </li>
+                        </ul>
+                    </div>
 
-                        <li>
-                            <h3>Lopen</h3>
-                            <p>
-                                Leer piano spelen met ondersteuning van een paar
-                                professionele piano leraren
-                            </p>
-                            <div>
-                                <p>
-                                    aantal mensen:
-                                    <span id="aantalMensen">3</span>/<span
-                                        id="maxMensen"
-                                        >20</span
-                                    >
-                                </p>
-                                <p>€<span id="prijs">5</span></p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <h3>Lopen</h3>
-                            <p>
-                                Leer piano spelen met ondersteuning van een paar
-                                professionele piano leraren
-                            </p>
-                            <div>
-                                <p>
-                                    aantal mensen:
-                                    <span id="aantalMensen">3</span>/<span
-                                        id="maxMensen"
-                                        >20</span
-                                    >
-                                </p>
-                                <p>€<span id="prijs">5</span></p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <h3>Lopen</h3>
-                            <p>
-                                Leer piano spelen met ondersteuning van een paar
-                                professionele piano leraren
-                            </p>
-                            <div>
-                                <p>
-                                    aantal mensen:
-                                    <span id="aantalMensen">3</span>/<span
-                                        id="maxMensen"
-                                        >20</span
-                                    >
-                                </p>
-                                <p>€<span id="prijs">5</span></p>
-                            </div>
-                        </li>
-                    </ul>
                 </section>
             </main>
 

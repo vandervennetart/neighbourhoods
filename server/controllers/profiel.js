@@ -1,7 +1,7 @@
 import { pool } from "../db.js";
 
 export const getAllProfiles = async (req, res) => {
-    const query = "SELECT id, naam, profielfoto from profielen";
+    const query = "SELECT id, naam, profielfoto from profielen where id != 1";
     try {
         const [result] = await pool.execute(query);
         res.status(200).json(result);

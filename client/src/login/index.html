@@ -18,6 +18,8 @@
             href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,700;1,400;1,700&display=swap"
             rel="stylesheet"
         />
+
+        <script src="../js/formvalidator/loginForm.js" type="module"></script>
         <title>Login</title>
     </head>
     <body>
@@ -25,53 +27,57 @@
             <header></header>
             <main>
                 <h1 class="logo" href="">Neighbourhoods</h1>
-                <form action="" id="profiel">
-                    <div
-                        class="errorSummary"
-                        role="group"
-                        aria-labelledby="errorSummary-heading"
-                        tabindex="-1"
-                    >
-                        <h2 id="errorSummary-heading">Er is een probleem</h2>
-                        <ul></ul>
-                    </div>
-
-                    <div>
-                        <label for="email">
-                            <span class="field-label">Email:</span>
-                        </label>
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            autocomplete="email"
-                            required
-                            autofocus
-                            tabindex="0"
-                        />
-                    </div>
-
-                    <div>
-                        <label for="wachtwoord">
-                            <span class="field-label">Wachtwoord:</span>
-                        </label>
-                        <input
-                            type="password"
-                            name="wachtwoord"
-                            id="wachtwoord"
-                            autocomplete="current-password"
-                            required
-                        />  
-                    </div>
-
-                    <div>
-                        <button class="button" type="submit">Login</button>
-                        <a href="../registreer/"
-                            >Heb je nog geen account?
-                            <span>Registreer hier</span></a
+                <div class="form">
+                    <form action="" id="login">
+                        <div
+                                class="errorSummary"
+                                role="group"
+                                aria-labelledby="errorSummary-heading"
+                                tabindex="-1"
                         >
-                    </div>
-                </form>
+                            <h2 id="errorSummary-heading">Er is een probleem</h2>
+                            <ul></ul>
+                        </div>
+
+                        <div>
+                            <label for="email">
+                                <span class="field-label">Email:</span>
+                            </label>
+                            <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    autocomplete="email"
+
+                                    autofocus
+                                    tabindex="0"
+                            />
+                        </div>
+
+                        <div>
+                            <label for="wachtwoord">
+                                <span class="field-label">Wachtwoord:</span>
+                            </label>
+                            <input
+                                    type="password"
+                                    name="wachtwoord"
+                                    id="wachtwoord"
+                                    autocomplete="current-password"
+
+                            />
+                        </div>
+
+                        <div>
+                            <button class="button" type="submit">Login</button>
+                            <a href="../registreer/"
+                            >Heb je nog geen account?
+                                <span>Registreer hier</span></a
+                            >
+                        </div>
+                    </form>
+                    <a class="button" href="../home">ga door als bezoeker</a>
+                </div>
+
             </main>
 
             <footer></footer>

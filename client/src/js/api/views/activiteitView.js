@@ -1,3 +1,6 @@
+import {jwtDecode} from "jwt-decode";
+
+
 export const getActiviteitElement = (data) => {
     const li = document.createElement("li");
     const naam = document.createElement("h3");
@@ -24,6 +27,20 @@ export const getActiviteitElement = (data) => {
     li.appendChild(beschrijving);
     li.appendChild(side);
     li.appendChild(url)
+
+
+
+    const accessToken = localStorage.getItem('accesToken');
+    if (jwtDecode(accessToken).id.id === 1){
+        console.log("A")
+        const deletebtn = document.createElement("button")
+
+        deletebtn.innerHTML = "<span></span><span></span><p>delete</p>"
+        deletebtn.classList.add("deletebtn")
+        deletebtn.addEventListener("click", () =>)
+
+        li.appendChild(deletebtn)
+    }
 
 
     return li;

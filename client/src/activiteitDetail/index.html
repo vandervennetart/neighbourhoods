@@ -19,6 +19,11 @@
             rel="stylesheet"
         />
         <script type="module" src="../js/header.js"></script>
+        <script type="module" src="../js/activiteitDetails.js"></script>
+        <script src=""></script>
+
+         <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrQS2HGFSXfKoof1KcP88dwEMCivVO2jA&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
         <title>Activiteit details</title>
     </head>
     <body>
@@ -47,9 +52,8 @@
             <main>
                 <section class="banner">
                     <div>
-                        <h1 id="activiteitNaam">Lopen</h1>
+                        <h1 id="activiteitNaam"></h1>
                         <p id="beschrijving">
-                            Kom samen lopen met ons in het bos
                         </p>
                     </div>
                 </section>
@@ -58,65 +62,32 @@
                     <h2 class="hidden">Info</h2>
                     <div class="kaart">
                         <h3>Locatie:</h3>
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.8568121214234!2d3.70127097668418!3d51.111101971725944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c37085fd32190f%3A0x3b60d198878014e6!2sHoeksken%2074%2C%209940%20Evergem!5e0!3m2!1sen!2sbe!4v1717364552856!5m2!1sen!2sbe"
-                            style="border: 0"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                        ></iframe>
+                        <p id="locatie"></p>
+                        <div id="map"></div>
                     </div>
                     <div class="organisatoren">
                         <h3>Organisator:</h3>
                         <ul>
-                            <li class="profilepicture">
-                                <h3>Tom</h3>
-                                <img
-                                    src="https://picsum.photos/100/100"
-                                    alt="Profielfoto"
-                                />
-                            </li>
                         </ul>
                     </div>
                     <div class="tijdstip">
                         <h3>tijdstip:</h3>
                         <ul>
-                            <li id="dag">3/6/2024</li>
-                            <li id="uur">10:30</li>
+                            <li id="dag"></li>
+                            <li id="uur"></li>
                         </ul>
                     </div>
                     <div class="prijs">
-                        <h3>prijs: €<span id="prijs">3</span></h3>
+                        <h3>prijs: €<span id="prijs"></span></h3>
                     </div>
 
                     <div class="deelnemers">
                         <h3>Mensen die komen:</h3>
                         <ul>
-                            <li class="profilepicture">
-                                <h3>Tom</h3>
-                                <img
-                                    src="https://picsum.photos/100/100"
-                                    alt="Profielfoto"
-                                />
-                            </li>
-                            <li class="profilepicture">
-                                <h3>Tom</h3>
-                                <img
-                                    src="https://picsum.photos/100/100"
-                                    alt="Profielfoto"
-                                />
-                            </li>
-                            <li class="profilepicture">
-                                <h3>Tom</h3>
-                                <img
-                                    src="https://picsum.photos/100/100"
-                                    alt="Profielfoto"
-                                />
-                            </li>
                         </ul>
                     </div>
 
-                    <button class="button">Schrijf je in</button>
+                    <button class="button" id="inschrijven">Schrijf je in</button>
                 </section>
             </main>
 
