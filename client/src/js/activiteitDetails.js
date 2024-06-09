@@ -22,7 +22,7 @@ let ingeschreven;
 const loadPage = () => {
     getPost(id)
         .then(async (data) => {
-            console.log(data)
+
             ingeschreven = data.ingeschreven
             if (ingeschreven) {
                 document.querySelector("#inschrijven").innerText = "Schrijf je uit"
