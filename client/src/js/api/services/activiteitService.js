@@ -44,7 +44,7 @@ export const getAllParticipant = (id) => {
 export const getPost = (id) => {
     const accessToken = localStorage.getItem('accesToken');
     return fetch(url + "/authenticate/posts/" + id, {
-        method : "POST",
+        method : "GET",
         headers: {
             "authorization" : `Bearer ${accessToken}`
         }
@@ -60,6 +60,7 @@ export const getPost = (id) => {
         })
         .then((response) => response.json())
         .then((json) => {
+            if (!json.maxMensen) json.maxMensen = "-"
             return json;
         })
         .catch((e) => console.log(e));

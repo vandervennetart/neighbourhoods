@@ -220,9 +220,14 @@ button {
 
 }
 
-.kaart div {
+.kaart {
     width: 100%;
-    height: 15rem;
+    height: 20rem;
+    > div{
+        width: 100%;
+        height: 100%;
+    }
+
 }
 
 .bewoners {
@@ -580,6 +585,11 @@ footer {
         z-index: -1;
         background-color: var(--accent2);
     }
+}
+
+form.zoek{
+    display: flex;
+    flex-direction: row;
 }
 
 /* BREAKPOINTS */

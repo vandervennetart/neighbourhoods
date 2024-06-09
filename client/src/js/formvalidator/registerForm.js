@@ -29,9 +29,28 @@ formValidator.addValidator({
         field.value
             .trim()
             .match(
-                /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/
             ),
     message: "E-mail voldoet niet aan het opgegeven patroon",
+});
+
+
+formValidator.addValidator({
+    name: "email",
+    method: (field) => field.value.trim().length > 0,
+    message: "email is een verplicht veld en werd niet ingevuld",
+});
+
+
+formValidator.addValidator({
+    name: "tel",
+    method: (field) =>
+        field.value
+            .trim()
+            .match(
+                /\+\d{1,2}\s?\d{3}\s?\d{2}\s?\d{2}\s?\d{2}/
+            ),
+    message: "telefoonnummer voldoet niet aan het opgegeven patroon",
 });
 
 formValidator.addValidator({
@@ -44,7 +63,7 @@ formValidator.addValidator({
 formValidator.addValidator({
     name: "wachtwoord",
     method: (field) => field.value.trim().length > 6,
-    message: "wachtwoord is een verplicht veld en werd niet ingevuld",
+    message: "wachtwoord moet minimum 7 karakters groot zijn",
 });
 
 formValidator.addValidator({
@@ -63,11 +82,6 @@ formValidator.addValidator({
 });
 
 
-formValidator.addValidator({
-    name: "herhaalWachtwoord",
-    method: (field) => field.value.trim().length > 0,
-    message: "Herhaal wachtwoord is een verplicht veld en werd niet ingevuld",
-});
 
 formValidator.addValidator({
     name: "herhaalWachtwoord",

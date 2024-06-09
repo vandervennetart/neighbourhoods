@@ -1,37 +1,10 @@
 import { pool } from "../db.js";
 
-export const getProfielFoto = async (req, res) => {
-    const Postid = +req.params.id;
-    const query = "select profielfoto from profielen where id = ?"
 
-    try{
-        const values = [Postid]
-        const [results] = await pool.execute(query, values)
-
-        const file = results[0];
-
-        res.setHeader('Content-Disposition', `attachment; filename="${file.name}"`);
-        res.setHeader('Content-Type', 'application/octet-stream');
-        res.status(200).send(file.profielfoto);
-
-
-
-    }catch (error) {
-        console.error("Error loggin in user:", error);
-        return res.status(500).json({
-            status: "error",
-            data: {error : "Internal Server Error"}
-        });
-    }
-
-
-
-
-}
 
 export const getAllPosts = async (req, res) => {
     let activityQuery = "SELECT * from activiteiten"
-    if (!req.query.sort === "null"){
+    if (!(req.query.sort === "null")){
         activityQuery += " ORDER BY " + req.query.sort ;
     }
 
@@ -145,7 +118,3 @@ where activiteiten_id = ?;`;
     }
 };
 
-
-export const createPost = async (req, res) => {
-
-};

@@ -1,4 +1,6 @@
 import {getProfielFoto} from "../services/profielService.js";
+import {jwtDecode} from "jwt-decode";
+import {bewonerVerwijderen} from "../services/authenticateService.js";
 
 export const getProfileElement = (data)=>{
     const li = document.createElement("li");
@@ -31,6 +33,18 @@ export const getProfileElement = (data)=>{
 
 
     figure.appendChild(img)
+
+
+    const accessToken = localStorage.getItem('accesToken');
+    if (accessToken && jwtDecode(accessToken).id.id === 1){
+        const deletebtn = document.createElement("button")
+
+        deletebtn.innerHTML = "<span></span><span></span><p>delete</p>"
+        deletebtn.classList.add("deletebtn")
+        deletebtn.addEventListener("click", () => bewonerVerwijderen(data.id).then(() => location.reload()))
+
+        li.appendChild(deletebtn)
+    }
 
     li.appendChild(naam)
     li.appendChild(figure)

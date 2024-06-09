@@ -64,6 +64,29 @@ formValidator.addValidator({
     message: "telefoonnummer is een verplicht veld en werd niet ingevuld",
 });
 
+formValidator.addValidator({
+    name: "email",
+    method: (field) =>
+        field.value
+            .trim()
+            .match(
+                /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/
+            ),
+    message: "E-mail voldoet niet aan het opgegeven patroon",
+});
+
+
+formValidator.addValidator({
+    name: "telefoonnummer",
+    method: (field) =>
+        field.value
+            .trim()
+            .match(
+                /\+\d{1,2}\s?\d{3}\s?\d{2}\s?\d{2}\s?\d{2}/
+            ),
+    message: "telefoonnummer voldoet niet aan het opgegeven patroon",
+});
+
 
 form.addEventListener("submit", async function (event) {
     event.preventDefault();

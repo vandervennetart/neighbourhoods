@@ -24,7 +24,7 @@ app.use(cors(corsOptions));
 
 // 2. Routers
 app.use("/api/v1/", postsRouter);
-app.use("/api/v1/profiles", profielRouter);
+app.use("/api/v1/", profielRouter);
 app.use("/api/v1/authenticate", authenticateRouter);
 
 // app.use("/api/v1/postsOfProfile", postsOfProfile);

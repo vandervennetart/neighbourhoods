@@ -1,7 +1,11 @@
 import { pool } from "../db.js";
 
 export const getAllProfiles = async (req, res) => {
-    const query = "SELECT id, naam, profielfoto from profielen where id != 1";
+
+    let query = "SELECT * from profielen where id != 1 and naam LIKE \"" + req.query.zoeken + "\""
+
+    console.log(query)
+
     try {
         const [result] = await pool.execute(query);
         res.status(200).json(result);
@@ -54,3 +58,32 @@ export const getProfile = async (req, res) => {
         });
     }
 };
+
+export const getProfielFoto = async (req, res) => {
+    const Postid = +req.params.id;
+    const query = "select profielfoto from profielen where id = ?"
+
+    try{
+        const values = [Postid]
+        const [results] = await pool.execute(query, values)
+
+        const file = results[0];
+
+        res.setHeader('Content-Disposition', `attachment; filename="${file.name}"`);
+        res.setHeader('Content-Type', 'application/octet-stream');
+        res.status(200).send(file.profielfoto);
+
+
+
+    }catch (error) {
+        console.error("Error loggin in user:", error);
+        return res.status(500).json({
+            status: "error",
+            data: {error : "Internal Server Error"}
+        });
+    }
+
+
+
+
+}

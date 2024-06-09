@@ -1,4 +1,5 @@
 import {jwtDecode} from "jwt-decode";
+import {activiteitVerwijderen} from "../services/authenticateService.js";
 
 
 export const getActiviteitElement = (data) => {
@@ -16,7 +17,7 @@ export const getActiviteitElement = (data) => {
 
     naam.innerText = data.naam;
     beschrijving.innerText = data.beschrijving;
-    aantalMensen.innerText = `aantal mensen: ${data.deelnemers.length}/${data.maxMensen}`;
+    aantalMensen.innerText = `aantal mensen: ${data.deelnemers.length}/${data.maxMensen||"-"}`;
     prijs.innerText = `€${data.prijs}`;
     url.href = `../activiteitDetail/?id=${data.id}`
 
@@ -31,13 +32,12 @@ export const getActiviteitElement = (data) => {
 
 
     const accessToken = localStorage.getItem('accesToken');
-    if (jwtDecode(accessToken).id.id === 1){
-        console.log("A")
+    if (accessToken && jwtDecode(accessToken).id.id === 1){
         const deletebtn = document.createElement("button")
 
         deletebtn.innerHTML = "<span></span><span></span><p>delete</p>"
         deletebtn.classList.add("deletebtn")
-        deletebtn.addEventListener("click", () =>)
+        deletebtn.addEventListener("click", () => activiteitVerwijderen(data.id).then(() => location.reload()))
 
         li.appendChild(deletebtn)
     }

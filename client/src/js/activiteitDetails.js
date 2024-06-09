@@ -1,12 +1,13 @@
 import {
     getPost,
 } from "./api/services/activiteitService.js";
-import { getProfile } from "./api/services/profielService.js";
+import {getProfile} from "./api/services/profielService.js";
 
 import dayjs from "dayjs";
-import { getProfileElement } from "./api/views/profielView.js";
-import { initMap } from "./api/services/googleMapsService.js";
+import {getProfileElement} from "./api/views/profielView.js";
 import {inschrijven} from "./api/services/authenticateService.js";
+import {makeMap} from "./api/views/mapsView.js";
+
 import("dayjs/locale/nl-be");
 
 
@@ -18,9 +19,10 @@ const id = urlParams.get("id");
 
 let ingeschreven;
 
-const loadPage = ()=>{
+const loadPage = () => {
     getPost(id)
         .then(async (data) => {
+            console.log(data)
             ingeschreven = data.ingeschreven
             if (ingeschreven) {
                 document.querySelector("#inschrijven").innerText = "Schrijf je uit"
@@ -34,8 +36,6 @@ const loadPage = ()=>{
 
             document.querySelector("#locatie").innerText = data.plaats;
 
-            await initMap(data.plaats)
-
             const datum = dayjs(data.datum);
 
             document.querySelector("#dag").innerText = datum
@@ -48,6 +48,9 @@ const loadPage = ()=>{
 
             document.querySelector("#prijs").innerText = data.prijs;
 
+
+            document.querySelector("#aantalMensen").innerText = `${data.deelnemers.length}/${data.maxMensen}`;
+
             const deelnemers = document.querySelector(".deelnemers ul");
 
             deelnemers.innerHTML = "" //remove all children
@@ -56,20 +59,25 @@ const loadPage = ()=>{
                 deelnemers.appendChild(getProfileElement(element));
             });
             return data;
-        })
+        }).then(async data => {
+        await makeMap(data)
+        return data
+    })
         .then((data) => getProfile(data.organisator_id))
         .then((data) => {
             const organisator = document.querySelector(".organisatoren ul");
             organisator.innerHTML = "" //remove all children
             organisator.appendChild(getProfileElement(data[0]));
-        });
+        })
 }
 
 loadPage()
 
 
-
-
-document.querySelector("#inschrijven").addEventListener("click", () => inschrijven(id).then(() => loadPage()))
+document.querySelector("#inschrijven").addEventListener("click", () => {
+    return inschrijven(id)
+        .then(() => loadPage())
+        .catch((data) => alert(data.data.message))
+})
 
 

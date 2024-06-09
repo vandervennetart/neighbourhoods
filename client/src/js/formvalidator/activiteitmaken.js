@@ -47,12 +47,6 @@ formValidator.addValidator({
 });
 
 formValidator.addValidator({
-    name: "maxMensen",
-    method: (field) => field.value.trim().length > 0,
-    message: "Max mensen is een verplicht veld en werd niet ingevuld",
-});
-
-formValidator.addValidator({
     name: "prijs",
     method: (field) => !isNaN(field.value.trim()),
     message: "Prijs moet een nummer zijn en er werd geen nummer meegegeven",
@@ -61,7 +55,14 @@ formValidator.addValidator({
 formValidator.addValidator({
     name: "maxMensen",
     method: (field) => !isNaN(field.value.trim()),
-    message: "Max mensen moet een nummer zijn en er werd geen nummer meegegeven",
+    message: "max mensen moet een nummer zijn en er werd geen nummer meegegeven",
+});
+
+
+formValidator.addValidator({
+    name: "datum",
+    method: (field) => !isNaN((new Date(field.value)).valueOf()),
+    message: "datum moet een datum zijn",
 });
 
 

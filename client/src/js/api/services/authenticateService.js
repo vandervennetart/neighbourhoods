@@ -96,8 +96,8 @@ export const refreshAcces = () => {
 export const logout = (e) => {
 
     localStorage.setItem("accesToken", "")
-    return fetch(url + "/authenticate/logout", {
-        method: "POST",
+    return fetch(url + "/authenticate/login", {
+        method: "DELETE",
         credentials: "include"
     }).then((response) => {
         if (!response.ok) throw new Error(response.statusCode);
@@ -133,7 +133,7 @@ export const updateProfiel = (payload) => {
 
 export const inschrijven = (id) => {
     const accessToken = localStorage.getItem('accesToken');
-    return fetch(url + "/authenticate/inschrijven/" + id, {
+    return fetch(url + "/authenticate/posts/inschrijven/" + id, {
         method: "POST",
         headers: {
             "authorization": `Bearer ${accessToken}`
@@ -147,7 +147,9 @@ export const inschrijven = (id) => {
             })
         } else if (response.status === 401) {
             await logout()
-        } else {
+        } else if (response.status === 400) {
+            throw await response.json()
+        }else {
             if (!response.ok) throw new Error(response.statusCode);
         }
         return response;
@@ -156,12 +158,11 @@ export const inschrijven = (id) => {
         .then((json) => {
             return json;
         })
-        .catch((e) => logout(e));
 }
 
 export const activiteitMaken = (payload) => {
     const accessToken = localStorage.getItem('accesToken');
-    return fetch(url + "/authenticate/activiteitMaken", {
+    return fetch(url + "/authenticate/posts", {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -188,20 +189,19 @@ export const activiteitMaken = (payload) => {
 }
 
 
-export const activiteitVerwijderen = (payload) => {
+export const activiteitVerwijderen = (id) => {
     const accessToken = localStorage.getItem('accesToken');
-    return fetch(url + "/authenticate/activiteitMaken", {
-        method: "POST",
+    return fetch(url + "/authenticate/posts/" + id, {
+        method: "DELETE",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
             "authorization": `Bearer ${accessToken}`
-        },
-        body: JSON.stringify({payload}),
+        }
     }).then(async (response) => {
         if (response.status === 403) {
             return refreshAcces().then(() => {
-                activiteitMaken(payload)
+                activiteitVerwijderen()
             }).catch(() => {
                 logout()
             })
@@ -217,7 +217,32 @@ export const activiteitVerwijderen = (payload) => {
 }
 
 
-
+export const bewonerVerwijderen = (id) => {
+    const accessToken = localStorage.getItem('accesToken');
+    return fetch(url + "/authenticate/profiel/" + id, {
+        method: "DELETE",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "authorization": `Bearer ${accessToken}`
+        }
+    }).then(async (response) => {
+        if (response.status === 403) {
+            return refreshAcces().then(() => {
+                bewonerVerwijderen()
+            }).catch(() => {
+                logout()
+            })
+        } else if (response.status === 401) {
+            await logout()
+        } else {
+            if (!response.ok) {
+                throw await response.json();
+            }
+        }
+        return response.json();
+    })
+}
 
 
 

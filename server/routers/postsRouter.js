@@ -1,11 +1,9 @@
 import express from "express";
 import { postValidator } from "../middelware/postValidation.js";
-import { getAllPosts, getPost, createPost, getAllOrganised, getAllParticipant } from "../controllers/post.js";
-import {authenticateToken} from "../middelware/authenticateValidation.js";
+import { getAllPosts, getPost, getAllOrganised, getAllParticipant } from "../controllers/post.js";
 
 const postsRouter = express.Router();
 
-postsRouter.route("/posts/").post(postValidator, createPost);
 postsRouter.route("/posts?:sort").get(getAllPosts)
 
 
