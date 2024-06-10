@@ -12,7 +12,6 @@ export const getAllProfiles = (zoeken) => {
         })
         .then((response) => response.json())
         .then((json) => {
-            console.log(json)
             return json;
         })
         .catch((e) => console.log(e));

@@ -71,7 +71,6 @@ formValidator.addValidator({
         let outcome = false
 
         field.value.trim().split("").forEach((letter)=>{
-            // console.log(!isNaN(+letter))
             if (!isNaN(+letter)) {
                 outcome = true
             }
@@ -99,10 +98,8 @@ form.addEventListener("submit", async function (event) {
 
     const payload = Object.fromEntries(new FormData(this).entries())
 
-    console.log(payload)
     register(payload)
         .then((data) => {
-            console.log(data)
             localStorage.setItem("accesToken", data.data.accessToken)
             window.location.href = "/home/"
 

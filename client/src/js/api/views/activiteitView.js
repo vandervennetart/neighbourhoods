@@ -20,6 +20,7 @@ export const getActiviteitElement = (data) => {
     aantalMensen.innerText = `aantal mensen: ${data.deelnemers.length}/${data.maxMensen||"-"}`;
     prijs.innerText = `€${data.prijs}`;
     url.href = `../activiteitDetail/?id=${data.id}`
+    url.innerText = "ga naar detail pagina"
 
     side.appendChild(aantalMensen);
     side.appendChild(prijs);
@@ -35,7 +36,7 @@ export const getActiviteitElement = (data) => {
     if (accessToken && jwtDecode(accessToken).id.id === 1){
         const deletebtn = document.createElement("button")
 
-        deletebtn.innerHTML = "<span></span><span></span><p>delete</p>"
+        deletebtn.innerHTML = "<span></span><span></span>delete"
         deletebtn.classList.add("deletebtn")
         deletebtn.addEventListener("click", () => activiteitVerwijderen(data.id).then(() => location.reload()))
 

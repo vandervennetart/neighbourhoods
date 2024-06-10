@@ -7,7 +7,7 @@
     --primary: var(--black);
     --bg: var(--white);
     --error-color: #e80202;
-    --accent: #e87e04;
+    --accent: #d27003;
     --accent2: #f59d00;
     --accent3: #ffd155;
 }
@@ -256,6 +256,7 @@ button {
 }
 
 .deletebtn{
+    color: transparent;
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -693,6 +694,10 @@ form.zoek{
 
 input[type="file"]{
     display: none;
+}
+input[type="submit"]{
+    max-height: 2.5rem;
+    align-self: flex-end;
 }
 
 /* ANIMATIONS */

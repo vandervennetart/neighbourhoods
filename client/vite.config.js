@@ -16,20 +16,20 @@ export default defineConfig({
 
         rollupOptions: {
             input: {
-                main: resolve(__dirname, "src/home/index.html"),
+                landingspagina: resolve(__dirname, "src/index.html"),
+                home: resolve(
+                    __dirname,
+                    "src/home/index.html"
+                ),
+                activiteiten: resolve(__dirname, "src/activiteiten/index.html"),
                 activiteitDetail: resolve(
                     __dirname,
                     "src/activiteitDetail/index.html"
                 ),
-                activiteiten: resolve(__dirname, "src/activiteiten/index.html"),
-                activiteitMaken: resolve(
+                activiteitMaken: resolve(__dirname, "src/activiteitMaken/index.html"),
+                bewoners: resolve(
                     __dirname,
-                    "src/activiteitMaken/index.html"
-                ),
-                bewoners: resolve(__dirname, "src/bewoners/index.html"),
-                landingspagina: resolve(
-                    __dirname,
-                    "src/landingspagina/index.html"
+                    "src/bewoners/index.html"
                 ),
                 login: resolve(__dirname, "src/login/index.html"),
                 profiel: resolve(__dirname, "src/profiel/index.html"),

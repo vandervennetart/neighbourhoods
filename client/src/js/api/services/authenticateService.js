@@ -105,14 +105,12 @@ export const logout = (e) => {
     })
         .then((response) => window.location.href = "/login/")
         .then(()=>{
-            console.log(e)
         })
         .catch((e) => console.log(e));
 }
 
 export const updateProfiel = (payload) => {
     const accessToken = localStorage.getItem('accesToken');
-    console.log(JSON.stringify(payload.profielfoto))
     return fetch(url + "/authenticate/Profiel", {
         method: "PATCH",
         headers: {

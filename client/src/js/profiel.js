@@ -15,7 +15,6 @@ const showInfo = () => {
         return id
     }).then((id) => getProfielFoto(id)).then(data =>{
 
-        console.log(data)
 
         if (data.byteLength === 0){
             img.src = "/profielfotos/default.png"
@@ -99,14 +98,12 @@ form.addEventListener("submit", async function (event) {
     };
 
     if (fotoInput.files.length > 0){
-        console.log("a")
         const reader = new FileReader();
         reader.onload = (event) => {
             const arrayBuffer = event.target.result;
             const uint8Array = new Uint8Array(arrayBuffer);
             payload.profielfoto = Array.from(uint8Array)
 
-            console.log(payload)
             updateProfiel(payload)
                 .then((data) => {
                     this.reset();
@@ -114,7 +111,6 @@ form.addEventListener("submit", async function (event) {
 
                 })
                 .catch((data) => {
-                    console.log(data)
                     formValidator.showSummary(data.message);
                 });
 
@@ -122,7 +118,6 @@ form.addEventListener("submit", async function (event) {
         }
         reader.readAsArrayBuffer(fotoInput.files[0]);
     }else{
-        console.log(payload)
         updateProfiel(payload)
             .then((data) => {
                 this.reset();
@@ -130,7 +125,6 @@ form.addEventListener("submit", async function (event) {
 
             })
             .catch((data) => {
-                console.log(data)
                 formValidator.showSummary(data.message);
             });
 
@@ -149,7 +143,5 @@ form.addEventListener("submit", async function (event) {
 const fotoInput = document.querySelector("#profielfoto")
 
 fotoInput.addEventListener("change", ()=>{
-    console.log(fotoInput.files[0])
-    console.log(fotoInput.files[0])
     img.src = URL.createObjectURL(fotoInput.files[0])
 })

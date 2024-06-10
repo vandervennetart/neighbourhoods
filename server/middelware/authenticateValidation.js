@@ -28,7 +28,6 @@ export const authenticateToken = (req, res, next) => {
     verify(token, accessTokenSecret, (err, id) => {
 
 
-        console.log(id)
 
         if (err) return res.sendStatus(403) //invalid token
         req.id = id

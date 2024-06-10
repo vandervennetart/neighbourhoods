@@ -1,6 +1,6 @@
 import {pool} from "../db.js";
 import {generateAccessToken, generateRefreshToken, refreshTokenSecret} from "../middelware/authenticateValidation.js";
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
 
@@ -169,7 +169,6 @@ export const getProfielData = async (req, res) => {
         const [response] = await pool.execute(query, values)
 
 
-        console.log(response)
         res.status(200).json(response);
 
     } catch (error) {
@@ -261,13 +260,11 @@ export const updateProfiel = async (req, res) => {
         if (alreadyIn.length === 0) {
 
             if (profielfoto) {
-                console.log("B")
                 values = [naam, email, telefoonnummer, profielfoto, id]
             } else {
                 values = [naam, email, telefoonnummer, id]
             }
 
-            console.log(query)
 
             const [response] = await pool.execute(query, values)
 
@@ -343,7 +340,7 @@ export const getPost = async (req, res) => {
     const activityQuery = "SELECT * from activiteiten where id = ?";
     const participantQuery = `select id, naam, profielfoto
                               from profielen_has_activiteiten
-                                       inner join profielen on Profielen_id = Profielen.id
+                                       inner join profielen on Profielen_id = profielen.id
                               where activiteiten_id = ?;`;
 
     try {
@@ -382,12 +379,10 @@ export const makePost = async (req, res) => {
     const organisator_id = req.id.id.id
     const {naam, beschrijving, prijs, plaats, datum, maxMensen} = req.body.payload
 
-    // console.log(req)
 
     const query = "insert into activiteiten (naam, beschrijving, prijs, plaats, datum, maxMensen, organisator_id) values (?,?,?,?,?,?,?);"
 
     try {
-        console.log(naam, beschrijving, prijs, plaats, datum, maxMensen, organisator_id)
         const values = [naam, beschrijving, prijs, plaats, datum, maxMensen, organisator_id];
         const [result] = await pool.execute(query, values);
 
@@ -409,7 +404,6 @@ export const delPost = async (req, res) => {
     const id = req.id.id.id
     const postid = +req.params.id;
 
-    // console.log(req)
 
     const query2 = "delete from activiteiten where id = ?;"
     const query = "delete from profielen_has_activiteiten where activiteiten_id = ?;"
@@ -440,7 +434,6 @@ export const delUser = async (req, res) => {
     const id = req.id.id.id
     const profielid = +req.params.id;
 
-    // console.log(req)
 
 
     const query = "delete from profielen_has_activiteiten where profielen_has_activiteiten.activiteiten_id in (select id from activiteiten where organisator_id = ?);"

@@ -20,7 +20,6 @@ laadProfielen("");
 document.querySelector("#zoek")?.addEventListener("submit", function (event) {
     event.preventDefault();
     const zoeken = document.querySelector("#zoekbar").value
-    console.log(zoeken)
     laadProfielen(zoeken)
 })
 

@@ -4,7 +4,6 @@ export const getAllProfiles = async (req, res) => {
 
     let query = "SELECT * from profielen where id != 1 and naam LIKE \"" + req.query.zoeken + "\""
 
-    console.log(query)
 
     try {
         const [result] = await pool.execute(query);

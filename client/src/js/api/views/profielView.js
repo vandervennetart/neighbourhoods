@@ -12,6 +12,7 @@ export const getProfileElement = (data)=>{
     li.classList.add("profilepicture");
     overlay.href = `../profielDetail/?id=${data.id}`
     overlay.classList.add("overlay-link")
+    overlay.innerText = "ga naar detail pagina"
 
     naam.innerText = data.naam;
 
@@ -29,8 +30,9 @@ export const getProfileElement = (data)=>{
         })
     }catch (e){
         img.src = URL("/profielfotos/default.png")
-    }
 
+    }
+    img.alt = "profielfoto"
 
     figure.appendChild(img)
 
@@ -39,7 +41,7 @@ export const getProfileElement = (data)=>{
     if (accessToken && jwtDecode(accessToken).id.id === 1){
         const deletebtn = document.createElement("button")
 
-        deletebtn.innerHTML = "<span></span><span></span><p>delete</p>"
+        deletebtn.innerHTML = "<span></span><span></span>delete"
         deletebtn.classList.add("deletebtn")
         deletebtn.addEventListener("click", () => bewonerVerwijderen(data.id).then(() => location.reload()))
 

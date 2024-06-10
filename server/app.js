@@ -12,7 +12,7 @@ const app = express();
 
 //middelware
 const corsOptions = {
-    origin : "http://localhost:5173",
+    origin : ["neighbourhoods.artvandervennet.ikdoeict.be","http://localhost:5173"],
     credentials : true
 }
 
